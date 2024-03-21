@@ -1,5 +1,7 @@
-<%# <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p> %>
+<h1>Welcome to DressLab</h1>
+<h2>
+<%= link_to "Sign up",new_user_registration_path, class: "btn btn-dark" %>
+</h2>
 <section class="hero" style="background-image: url('<%= image_path('Hero_DressLab.jpg') %>')">
   <div class="hero-content">
     <h1>DressLab</h1>
@@ -24,4 +26,3 @@
     <p>Earn from the stylish gems in your wardrobe. Easily list your fashion treasures for sale and start generating extra income securely.</p>
   </div>
 </section>
-
