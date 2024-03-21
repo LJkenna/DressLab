@@ -1,1 +1,7 @@
+<h1>
 <%= @item.description %>
+</h1>
+<p>
+<%= link_to "homepage", root_path %>
+</p>
+<%= render "bookings/formbooking", item: @item, booking: @booking %>
