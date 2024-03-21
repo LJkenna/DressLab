@@ -1,7 +1,10 @@
 <h1>
-<%= @item.description %>
+<%= @item.brand %>
 </h1>
-<p>
-<%= link_to "homepage", root_path %>
-</p>
+<h2>
+<%= @item.description %>
+</h2>
+<h2><%=@item.price_per_day%>€ Per day</h2>
 <%= render "bookings/formbooking", item: @item, booking: @booking %>
+<hr>
+<%= link_to "Back to dresses", items_path, class: "btn btn-primary" %>

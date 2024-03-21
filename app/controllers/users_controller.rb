@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     #--
     @bookings = current_user.bookings
+    @items = current_user.items
   end
 
   private

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit]
   def index
     @items = Item.all
   end
@@ -10,6 +10,10 @@ class ItemsController < ApplicationController
 
   def show
     @booking = Booking.new
+    #--
+  end
+
+  def edit
     #--
   end
 
