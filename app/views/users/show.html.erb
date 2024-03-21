@@ -1,0 +1,35 @@
+<p>First name: <%= @user.first_name %></p>
+<p>Last name: <%= @user.last_name %></p>
+<p>Email:  <%= @user.email %>
+<h2>Items</h2>
+<hr>
+<%= link_to "Add dress", new_item_path, class: "btn btn-primary" %>
+<hr>
+<%@items.each do |item|  %>
+<ul>
+<li>
+Brand: <%= item.brand %>
+</li>
+<li>
+desciprtion: <%= item.description %>
+</li>
+<li>
+<%= link_to "Edit dress", edit_item_path(item), class: "btn btn-primary" %>
+</li>
+</ul>
+<% end %>
+<h2>Bookings</h2>
+<%@bookings.each do |booking|  %>
+<%= booking.item.brand %>
+<%= booking.item.description %>
+<%= booking.item.category %>
+<%=  %>
+<ul>
+<li>
+rent start date: <%= booking.rent_start_date %>
+</li>
+<li>
+rent end date: <%= booking.rent_end_date %>
+</li>
+</ul>
+<% end %>

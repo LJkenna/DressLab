@@ -1,0 +1,13 @@
+<% @items.each do |item| %>
+<ul>
+<li>
+<%=link_to item.brand, item_path(item) %>
+</li>
+<li>
+<%= item.description %>
+</li>
+<li>
+<%= item.price_per_day %>€ Per day
+</li>
+</ul>
+<% end  %>
