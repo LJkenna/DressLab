@@ -1,13 +1,18 @@
-<% @items.each do |item| %>
-<ul>
-<li>
-<%=link_to item.brand, item_path(item) %>
-</li>
-<li>
-<%= item.description %>
-</li>
-<li>
-<%= item.price_per_day %>€ Per day
-</li>
-</ul>
-<% end  %>
+<section class="items-index">
+  <div class="container">
+    <h2>Items</h2>
+    <div class="row">
+      <% @items.each do |item| %>
+        <div class="col-md-4">
+          <div class="item-card">
+            <%= link_to item_path(item) do %>
+              <h3><%= item.brand %></h3>
+              <p><%= item.description %></p>
+              <p><%= item.price_per_day %>€ Per day</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
