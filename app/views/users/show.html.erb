@@ -1,6 +1,8 @@
+<h1>Profile</h1>
 <p>First name: <%= @user.first_name %></p>
 <p>Last name: <%= @user.last_name %></p>
 <p>Email:  <%= @user.email %>
+<%= link_to "Edit account", edit_user_registration_path, class:"btn btn-primary" %>
 <h2>Items</h2>
 <hr>
 <%= link_to "Add dress", new_item_path, class: "btn btn-primary" %>
