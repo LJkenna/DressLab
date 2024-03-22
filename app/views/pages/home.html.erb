@@ -7,24 +7,91 @@
 <section class="hero" style="background-image: url('<%= image_path('Hero_DressLab.jpg') %>')">
   <div class="hero-content">
     <h1>DressLab</h1>
-    <%# Other elements for the Hero section %>
+    <p class="slogan">Rent the trend, save the planet. Your gateway to sustainable fashion.</p>
+    <!-- Do we need anything more? -->
+  </div>
+</section>
+<section class="features bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="feature">
+          <%= image_tag 'register_icon.png', alt: 'Register Icon', class: 'feature-icon' %>
+          <h3>Register</h3>
+          <p>Sign up for a DressLab account today and unlock access to our exclusive Lab dream collective closet. Joining is simple, quick, and completely free.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature">
+          <%= image_tag 'rent_icon.png', alt: 'Rent Icon', class: 'feature-icon' %>
+          <h3>Rent</h3>
+          <p>Explore a delightful selection of premium clothing and accessories suitable for any event. Rent your preferred styles affordably and sustainably, adding a touch of elegance to your wardrobe without breaking the bank.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature">
+          <%= image_tag 'lend_icon.png', alt: 'Lend Icon', class: 'feature-icon' %>
+          <h3>Lend</h3>
+          <p>Earn from the stylish gems in your wardrobe. Easily list your fashion treasures for sale and start generating extra income securely.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="features">
-  <div class="feature">
-    <%= image_tag 'register_icon.png', alt: 'Register Icon' %>
-    <h3>Register</h3>
-    <p>Sign up for a DressLab account today and unlock access to our exclusive Lab dream collective closet. Joining is simple, quick, and completely free.</p>
+<section class="about-us">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <%= image_tag 'about_us.jpg', alt: 'About Us', class: 'img-fluid' %>
+      </div>
+      <div class="col-md-6">
+        <h2>About DressLab</h2>
+        <p>DressLab is a vibrant fashion community that champions sustainable practices by offering high-quality clothing for rent. Our vision is to make trendy fashion accessible to all while minimizing our ecological footprint. We are committed to nurturing a guilt-free love for fashion, advocating for conscious consumption, and fostering a community built on shared values of social and environmental responsibility. Join us in transforming the fashion industry one rental at a time.</p>
+      </div>
+    </div>
   </div>
-  <div class="feature">
-    <%= image_tag 'rent_icon.png', alt: 'Rent Icon' %>
-    <h3>Rent</h3>
-    <p>Explore a delightful selection of premium clothing and accessories suitable for any event. Rent your preferred styles affordably and sustainably, adding a touch of elegance to your wardrobe without breaking the bank.</p>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <h2>What Our Clients Say</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="testimonial">
+          <p>"I absolutely love DressLab! It's so convenient to rent stylish outfits for special occasions without breaking the bank. The selection is amazing, and the quality of the garments is top-notch."</p>
+          <p class="author">- Sarah, Munich</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="testimonial">
+          <p>"Lending my designer dresses on DressLab has been a game-changer for me. It's a great way to earn some extra income while sharing my love for fashion with others."</p>
+          <p class="author">- Julia, Berlin</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="testimonial">
+          <p>"I'm so glad I discovered DressLab. It's my go-to platform for renting stunning outfits for weddings, parties, and other events. The customer service is exceptional, and the entire process is seamless."</p>
+          <p class="author">- Anna, Frankfurt</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="testimonial">
+          <p>"As someone who values sustainability, DressLab aligns perfectly with my values. I can indulge in fashion without the guilt of overconsuming. It's a win-win for my style and the planet."</p>
+          <p class="author">- Emily, Hamburg</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="feature">
-    <%= image_tag 'lend_icon.png', alt: 'Lend Icon' %>
-    <h3>Lend</h3>
-    <p>Earn from the stylish gems in your wardrobe. Easily list your fashion treasures for sale and start generating extra income securely.</p>
+</section>
+
+<section class="sustainability" style="background-image: url('<%= image_path('sustainability.jpg') %>')">
+  <div class="container">
+    <div class="sustainability-content">
+      <h2>Embrace Sustainable Fashion</h2>
+      <p>Renting clothes is not only a smart financial choice but also an eco-friendly one. By choosing to rent instead of buying, you contribute to reducing textile waste and minimizing the environmental impact of fashion. Join the sustainable fashion movement with DressLab and make a positive difference, one rental at a time.</p>
+    </div>
   </div>
 </section>

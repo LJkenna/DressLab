@@ -1,0 +1,12 @@
+<section class="bookings-index">
+  <div class="container">
+    <h2>My Bookings</h2>
+    <% @bookings.each do |booking| %>
+      <div class="booking-card">
+        <h3><%= booking.item.brand %></h3>
+        <p>Booking Date: <%= booking.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(booking), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</section>

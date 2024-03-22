@@ -1,10 +1,17 @@
-<h1>
-<%= @item.brand %>
-</h1>
-<h2>
-<%= @item.description %>
-</h2>
-<h2><%=@item.price_per_day%>€ Per day</h2>
-<%= render "bookings/formbooking", item: @item, booking: @booking %>
-<hr>
-<%= link_to "Back to dresses", items_path, class: "btn btn-primary" %>
+<section class="item-show">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Add item image here if available -->
+      </div>
+      <div class="col-md-6">
+        <h1><%= @item.brand %></h1>
+        <h2><%= @item.description %></h2>
+        <h2><%= @item.price_per_day %>€ Per day</h2>
+        <%= render "bookings/formbooking", item: @item, booking: @booking %>
+        <hr>
+        <%= link_to "Back to dresses", items_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</section>
