@@ -1,15 +1,31 @@
-.user-registration {
-    padding: 60px 0;
-  
+.registration-page {
+  background-image: url('registration-background.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  .registration-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    
+    .logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    
     h2 {
       margin-bottom: 30px;
     }
-  
-    .form-group {
+    
+    .form-inputs {
       margin-bottom: 20px;
     }
-  
+    
     .form-actions {
-      margin-top: 30px;
+      margin-top: 20px;
     }
   }
+}
