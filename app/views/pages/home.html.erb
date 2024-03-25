@@ -1,9 +1,3 @@
-<h1>Welcome to DressLab</h1>
-<h2>
-<% if !current_user %>
-<%= link_to "Sign up",new_user_registration_path, class: "btn btn-dark" %>
-<% end  %>
-</h2>
 <section class="hero" style="background-image: url('<%= image_path('Hero_DressLab.jpg') %>')">
   <div class="hero-content">
     <h1>DressLab</h1>
@@ -11,6 +5,7 @@
     <!-- Do we need anything more? -->
   </div>
 </section>
+
 <section class="features bg-light">
   <div class="container">
     <div class="row">
@@ -95,3 +90,4 @@
     </div>
   </div>
 </section>
+
