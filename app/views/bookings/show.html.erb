@@ -8,6 +8,7 @@
 </p>
 <p>
 <h2>Item</h2>
+<%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
 <p>Brand:
 <%= @item.brand  %>
 </p>

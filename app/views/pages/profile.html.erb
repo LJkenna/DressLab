@@ -5,9 +5,10 @@
 <%= link_to "Edit account", edit_user_registration_path, class:"btn btn-primary" %>
 <h2>Items</h2>
 <hr>
-<%= link_to "Add dress", new_item_path, class: "btn btn-primary" %>
+<%= link_to "Add Item", new_item_path, class: "btn btn-primary" %>
 <hr>
 <%@items.each do |item|  %>
+<%= cl_image_tag item.photo.key, height: 300, width: 400, crop: :fill %>
 <ul>
 <li>
 Brand: <%= item.brand %>
