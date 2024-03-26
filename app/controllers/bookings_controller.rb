@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = current_user.bookings
+  end
+
   def show
     @booking = Booking.find(params[:id])
     @item = Item.find(@booking.item_id)
@@ -18,7 +22,6 @@ class BookingsController < ApplicationController
   end
 
   private
-
 
   def booking_params
     params.require(:booking).permit(:rent_end_date, :rent_start_date)
