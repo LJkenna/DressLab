@@ -14,6 +14,7 @@ Item.destroy_all
 
 puts "adding items"
 
+
 file = URI.open("https://res.cloudinary.com/dyle4qbxp/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1711448749/pexels-yuri-manei-2235071_rmoew6.jpg?_s=public-apps")
 item = Item.new(brand: "Gucci", size: "20", color: "pink", price_per_day: "56", garment_type: "Dresses", description: "Fantastic silk dress for hot summer days")
 item.photo.attach(io: file, filename: "a", content_type: "image/png")

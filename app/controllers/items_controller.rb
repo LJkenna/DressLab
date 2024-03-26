@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.all
   end
@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def create
     @user = User.find(current_user.id)
     @item = Item.new(item_params)
@@ -35,6 +34,17 @@ class ItemsController < ApplicationController
       redirect_to item_path(@item)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.bookings
+      redirect_to profile_path
+      flash.alert = "Item part of booking. Unable to delete"
+    else
+      @item.destroy
+      redirect_to profile_path
     end
   end
 
