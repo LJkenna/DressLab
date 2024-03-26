@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   validates :price_per_day, presence: true
   validates :description, presence: true
   validates :category, presence: true
+  has_one_attached :photo
 end
