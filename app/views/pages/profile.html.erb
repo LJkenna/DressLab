@@ -5,7 +5,7 @@
 <%= link_to "Edit account", edit_user_registration_path, class:"btn btn-primary" %>
 <h2>Items</h2>
 <hr>
-<%= link_to "Add dress", new_item_path, class: "btn btn-primary" %>
+<%= link_to "Add item", new_item_path, class: "btn btn-primary" %>
 <hr>
 <%@items.each do |item|  %>
 <ul>
@@ -16,7 +16,13 @@ Brand: <%= item.brand %>
 desciprtion: <%= item.description %>
 </li>
 <li>
-<%= link_to "Edit dress", edit_item_path(item), class: "btn btn-primary" %>
+<%= link_to "Edit", edit_item_path(item), class: "btn btn-primary" %>
+</li>
+<li>
+<%= link_to "Delete", item_path(item), data: {turbo_method: :delete, turbo_confirm: "Are you sure want to delete this?"}, class: "btn btn-primary"  %>
+</li>
+<li>
+<%= link_to "view", item_path(item), class: "btn btn-primary"  %>
 </li>
 </ul>
 <% end %>

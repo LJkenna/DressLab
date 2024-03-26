@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.all
   end
@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def create
     @user = User.find(current_user.id)
     @item = Item.new(item_params)
@@ -38,10 +37,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.bookings
+      redirect_to profile_path
+      flash.alert = "Item part of booking. Unable to delete"
+    else
+      @item.destroy
+      redirect_to profile_path
+    end
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:brand, :size, :color, :price_per_day, :garment_type, :description, status: 1)
+    params.require(:item).permit(:brand, :size, :color, :price_per_day, :garment_type, :description, :photo, status: 1)
   end
 
   def set_item
