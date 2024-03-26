@@ -3,9 +3,7 @@ class PagesController < ApplicationController
   def home
   end
 
-
-
-  def show
+  def profile
     #--
     @current_user = current_user
     @bookings = current_user.bookings
