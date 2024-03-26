@@ -3,6 +3,7 @@
     <h2>My Bookings</h2>
     <% @bookings.each do |booking| %>
       <div class="booking-card">
+      <%= cl_image_tag booking.item.photo.key, height: 300, width: 400, crop: :fill %>
         <h3><%= booking.item.brand %></h3>
         <p>Booking Date: <%= booking.created_at.strftime('%B %d, %Y') %></p>
         <%= link_to 'View Details', booking_path(booking), class: 'btn btn-primary' %>
