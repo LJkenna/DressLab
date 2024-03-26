@@ -1,10 +1,23 @@
 
 <%= simple_form_for @item do |f| %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :brand %>
   <%= f.input :size %>
   <%= f.input :color %>
   <%= f.input :price_per_day %>
-  <%= f.input :category %>
+  <%= f.input :garment_type, collection: %w[Coats
+		Denim
+		Dresses
+		Jackets
+		Polo shirts
+		Shirts
+		Shorts
+		Skirts
+		Skiwear
+	  Suits
+		Sweaters/knitwear
+		Tops
+		Trousers] %>
   <%= f.input :description %>
   <%= f.button :submit %>
 <% end %>
