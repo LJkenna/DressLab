@@ -1,7 +1,10 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :destroy]
+  before_action :set_booking, only: [:show, :destroy, :accepted, :rejected]
   def index
-    @bookings = current_user.bookings
+    @rentpending = current_user.bookings.request_pending
+    @rentaccepted = current_user.bookings.request_accepted
+    @rentrejected = current_user.bookings.request_rejected
+    @lendpending = current_user.items
   end
 
   def show
@@ -14,6 +17,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user_id = @user.id
     @booking.item_id = @item.id
+    @booking.request_pending!
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -23,6 +27,16 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    redirect_to bookings_path
+  end
+
+  def accepted
+    @booking.request_accepted!
+    redirect_to bookings_path
+  end
+
+  def rejected
+    @booking.request_rejected!
     redirect_to bookings_path
   end
 
