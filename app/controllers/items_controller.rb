@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    if @item.bookings
+    if @item.bookings.count.positive?
       redirect_to profile_path
       flash.alert = "Item part of booking. Unable to delete"
     else

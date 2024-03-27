@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resources :bookings, only: [:new, :create]
     end
     resources :bookings, only: [:index, :show, :destroy]
+    get '/accepted/:id', to: 'bookings#accepted', as: :accept
+    get '/rejected/:id', to: 'bookings#rejected', as: :reject
   # Defines the root path route ("/")
   # root "posts#index"
 end

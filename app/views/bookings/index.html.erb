@@ -1,13 +1,36 @@
 <section class="bookings-index">
   <div class="container">
-    <h2>My Bookings</h2>
-    <% @bookings.each do |booking| %>
+    <h2>Bookings</h2>
+<h2>Pending bookings</h2>
+    <% @rentpending.each do |rentpending| %>
       <div class="booking-card">
-      <%= cl_image_tag booking.item.photo.key, height: 300, width: 400, crop: :fill %>
-        <h3><%= booking.item.brand %></h3>
-        <p>Booking Date: <%= booking.created_at.strftime('%B %d, %Y') %></p>
-        <%= link_to 'View Details', booking_path(booking), class: 'btn btn-primary' %>
-      </div>
+      <%= cl_image_tag rentpending.item.photo.key, height: 300, width: 400, crop: :fill %>
+        <h3><%= rentpending.item.brand %></h3>
+        <p>Booking Date: <%= rentpending.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentpending), class: 'btn btn-primary' %>
+        </div>
     <% end %>
-  </div>
-</section>
+<h2>Accepted bookings</h2>
+    <% @rentaccepted.each do |rentaccepted| %>
+      <div class="booking-card">
+      <%= cl_image_tag rentaccepted.item.photo.key, height: 300, width: 400, crop: :fill %>
+        <h3><%= rentaccepted.item.brand %></h3>
+        <p>Booking Date: <%= rentaccepted.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentaccepted), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+<h2>Rejected bookings</h2>
+    <% @rentrejected.each do |rentrejected| %>
+      <div class="booking-card">
+      <%= cl_image_tag rentrejected.item.photo.key, height: 300, width: 400, crop: :fill %>
+        <h3><%= rentrejected.item.brand %></h3>
+        <p>Booking Date: <%= rentrejected.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentrejected), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+
+
+
+<% @lendpending.each do |booking| %>
+<%= booking.bookings %>
+<% end  %>

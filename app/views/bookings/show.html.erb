@@ -21,3 +21,8 @@
 <%= link_to "Delete booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure want to delete this?"}, class: "btn btn_primary"  %>
 <hr>
 <%= link_to "Back to bookings", bookings_path, class: "btn btn-primary" %>
+<hr>
+<%= link_to "Accept booking", accept_path(@booking), class: "btn btn_primary"  %>
+<hr>
+<%= link_to "Reject booking", reject_path(@booking), class: "btn btn_primary"  %>
+<hr>
