@@ -10,3 +10,13 @@
 .navbar-lewagon .navbar-brand img {
   width: 70px;
 }
+
+.navbar-lewagon {
+  // ...
+  transition: background-color 0.3s ease;
+
+  &.navbar-shrink {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
