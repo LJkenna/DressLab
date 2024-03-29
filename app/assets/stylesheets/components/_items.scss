@@ -28,7 +28,18 @@
   }
   
   .item-show {
-    padding-top: 40px; /* Add padding to create space between the photo and the navbar */
+    .book-now-container {
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin-bottom: 20px;
+      margin-top: 80px; /* Add margin-top to create space from the navbar */
+  
+      h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
   
     .item-image {
       margin-bottom: 30px;
@@ -36,7 +47,7 @@
       img {
         width: 100%;
         height: auto;
-        object-fit: contain; /* Change object-fit to 'contain' to show the full photo */
+        object-fit: contain;
       }
     }
   
