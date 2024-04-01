@@ -9,7 +9,11 @@
         <h1><%= @item.brand %></h1>
         <h2><%= @item.description %></h2>
         <h2><%= @item.price_per_day %>€ Per day</h2>
+        <% if !(@item.user_id == current_user.id)  %>
         <%= render "bookings/formbooking", item: @item, booking: @booking %>
+        <% else %>
+        <h2>Your item</h2>
+        <% end %>
         <hr>
         <%= link_to "Back to shop", items_path, class: "btn btn-primary" %>
       </div>

@@ -4,7 +4,10 @@ class BookingsController < ApplicationController
     @rentpending = current_user.bookings.request_pending
     @rentaccepted = current_user.bookings.request_accepted
     @rentrejected = current_user.bookings.request_rejected
-    @lendpending = current_user.items
+    lendbookings = Booking.joins(:item).where(item: { user_id: current_user.id })
+    @lendpending = lendbookings.request_pending
+    @lendaccepted = lendbookings.request_accepted
+    @lendrejected = lendbookings.request_rejected
   end
 
   def show
@@ -12,11 +15,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @user = User.find(current_user.id)
     @item = Item.find(params[:item_id])
     @booking = Booking.new(booking_params)
-    @booking.user_id = @user.id
-    @booking.item_id = @item.id
+    @booking.total_amount = total_amount(@item, @booking)
+    @booking.user = User.find(current_user.id)
+    @booking.item = @item
     @booking.request_pending!
     if @booking.save
       redirect_to booking_path(@booking)
@@ -48,5 +51,9 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def total_amount(item, booking)
+    (booking.rent_end_date - booking.rent_start_date).to_i * item.price_per_day
   end
 end
