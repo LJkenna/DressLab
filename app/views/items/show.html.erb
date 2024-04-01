@@ -1,21 +1,31 @@
 <section class="item-show">
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-6">
-        <!-- Add item image here if available -->
+        <div class="book-now-container">
+          <h2 class="text-center">Book now</h2>
+        </div>
+        <div class="item-image text-center">
+          <%= cl_image_tag @item.photo.key, class: "img-fluid", crop: :fill %>
+        </div>
       </div>
+    </div>
+    <div class="row justify-content-center">
       <div class="col-md-6">
-        <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
-        <h1><%= @item.brand %></h1>
-        <h2><%= @item.description %></h2>
-        <h2><%= @item.price_per_day %>€ Per day</h2>
-        <% if !(@item.user_id == current_user.id)  %>
-        <%= render "bookings/formbooking", item: @item, booking: @booking %>
-        <% else %>
+        <h1 class="mb-4 text-center"><%= @item.brand %></h1>
+        <p class="lead text-center"><%= @item.description %></p>
+        <p class="h3 mb-4 text-center"><%= @item.price_per_day %>€ Per day</p>
+        <div class="booking-form mt-5">
+          <% if !(@item.user_id == current_user.id)  %>
+          <%= render "bookings/formbooking", item: @item, booking: @booking %>
+         <% else %>
         <h2>Your item</h2>
         <% end %>
+        </div>
         <hr>
-        <%= link_to "Back to shop", items_path, class: "btn btn-primary" %>
+        <div class="text-center">
+          <%= link_to "Back to shop", items_path, class: "btn btn-secondary mt-4" %>
+        </div>
       </div>
     </div>
   </div>
