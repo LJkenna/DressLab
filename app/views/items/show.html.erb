@@ -1,28 +1,23 @@
-<section class="item-show">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="book-now-container">
-          <h2 class="text-center">Book now</h2>
-        </div>
-        <div class="item-image text-center">
-          <%= cl_image_tag @item.photo.key, class: "img-fluid", crop: :fill %>
+<div class="container py-5 my-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="text-center">Book now</h2>
+    </div>
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <%= cl_image_tag @item.photo.key, class: "img-fluid mb-4", crop: :fill %>
+          <h1 class="mb-4"><%= @item.brand %></h1>
+          <p class="lead"><%= @item.description %></p>
+          <p class="h3 mb-4"><%= @item.price_per_day %>€ Per day</p>
+          <div class="booking-form">
+            <%= render "bookings/formbooking", item: @item, booking: @booking %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <h1 class="mb-4 text-center"><%= @item.brand %></h1>
-        <p class="lead text-center"><%= @item.description %></p>
-        <p class="h3 mb-4 text-center"><%= @item.price_per_day %>€ Per day</p>
-        <div class="booking-form mt-5">
-          <%= render "bookings/formbooking", item: @item, booking: @booking %>
-        </div>
-        <hr>
-        <div class="text-center">
-          <%= link_to "Back to shop", items_path, class: "btn btn-secondary mt-4" %>
-        </div>
-      </div>
+    <div class="card-footer text-center">
+      <%= link_to "Back to shop", items_path, class: "btn btn-secondary" %>
     </div>
   </div>
-</section>
+</div>
