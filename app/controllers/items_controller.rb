@@ -2,6 +2,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.all
+    if params[:query].present?
+      sql_subquery = "brand @@ :query OR garment_type @@ :query OR color @@ :query OR description @@ :query"
+      @items = @items.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def new
@@ -39,7 +43,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    if @item.bookings
+    if @item.bookings.count.positive?
       redirect_to profile_path
       flash.alert = "Item part of booking. Unable to delete"
     else
