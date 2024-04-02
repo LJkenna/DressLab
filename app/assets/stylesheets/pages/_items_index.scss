@@ -1,28 +1,42 @@
 .items-index {
-    
-    padding: 60px 0;
-  
+    padding: 60px 20px 15px 20px;
     h2 {
-      margin-bottom: 30px;
-    }
-  
-    .item-card {
-      margin-bottom: 30px;
+      margin-bottom: 60px;
       text-align: center;
-  
-      .item-image {
-        width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-      }
-  
+    }
+
+    .item-card {
+      margin: 5px 10px 60px 10px;
+      text-align: center;
+
       h3 {
         font-size: 20px;
         margin-bottom: 5px;
+        color: black;
+        padding-top: 10px;
       }
-  
+
       p {
         color: #777;
+        margin-bottom: 10px;
       }
     }
+    .card {
+      text-decoration: none;
+      width: 18rem;
+
+    }
+    .card-img-top {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      object-position: 50% 50%;
+    }
+
+    .card-body {
+      min-height: 80px;
+    }
+
+
   }
