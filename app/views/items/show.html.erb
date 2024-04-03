@@ -16,10 +16,12 @@
         <p class="lead text-center"><%= @item.description %></p>
         <p class="h3 mb-4 text-center"><%= @item.price_per_day %>€ Per day</p>
         <div class="booking-form mt-5">
-          <% if !(@item.user_id == current_user.id)  %>
+          <% if user_signed_in? && !(@item.user_id == current_user.id)  %>
           <%= render "bookings/formbooking", item: @item, booking: @booking %>
-         <% else %>
+          <% elsif user_signed_in? && (@item.user_id == current_user.id) %>
         <h2>Your item</h2>
+          <% else %>
+        <h2>Sign in to book this item</h2>
         <% end %>
         </div>
         <hr>
