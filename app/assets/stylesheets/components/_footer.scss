@@ -1,9 +1,14 @@
 .page-container {
+  background-color: aliceblue;
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
   }
-  
+
   .footer .icon-black {
     color: #000 !important;
+  }
+
+  .card-header {
+    background-color: aliceblue;
   }

@@ -16,36 +16,36 @@ class BookingsController < ApplicationController
 
   def create
     if user_signed_in?
-    @item = Item.find(params[:item_id])
-    @booking = Booking.new(booking_params)
-    @booking.total_amount = total_amount(@item, @booking)
-    @booking.user = User.find(current_user.id)
-    @booking.item = @item
-    @booking.request_pending!
-    if @booking.save
-      redirect_to booking_path(@booking)
+      @item = Item.find(params[:item_id])
+      @booking = Booking.new(booking_params)
+      @booking.total_amount = total_amount(@item, @booking)
+      @booking.user = User.find(current_user.id)
+      @booking.item = @item
+      @booking.request_pending!
+      if @booking.save
+        redirect_to booking_path(@booking)
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
-    end
-  else
-    redirect_to item_path
-    flash.alert = "Must be sign in the make booking"
+      redirect_to item_path
+      flash.alert = "Must be sign in the make booking"
     end
   end
 
   def destroy
     @booking.destroy
-    redirect_to bookings_path
+    redirect_to profile_path
   end
 
   def accepted
     @booking.request_accepted!
-    redirect_to bookings_path
+    redirect_to profile_path
   end
 
   def rejected
     @booking.request_rejected!
-    redirect_to bookings_path
+    redirect_to profile_path
   end
 
   private
