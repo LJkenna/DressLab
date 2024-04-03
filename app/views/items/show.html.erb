@@ -11,8 +11,13 @@
           <p class="lead"><%= @item.description %></p>
           <p class="h3 mb-4"><%= @item.price_per_day %>€ Per day</p>
           <div class="booking-form">
-            <%= render "bookings/formbooking", item: @item, booking: @booking %>
-          </div>
+              <% if user_signed_in? && !(@item.user_id == current_user.id)  %>
+          <%= render "bookings/formbooking", item: @item, booking: @booking %>
+          <% elsif user_signed_in? && (@item.user_id == current_user.id) %>
+        <h2>Your item</h2>
+          <% else %>
+        <h2>Sign in to book this item</h2>
+        <% end %>
         </div>
       </div>
     </div>
@@ -20,4 +25,6 @@
       <%= link_to "Back to shop", items_path, class: "btn btn-secondary" %>
     </div>
   </div>
-</div>
+
+
+

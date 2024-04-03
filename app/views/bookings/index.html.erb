@@ -1,13 +1,84 @@
-<section class="bookings-index">
+<section class="requests-index">
   <div class="container">
-    <h2>My Bookings</h2>
-    <% @bookings.each do |booking| %>
-      <div class="booking-card">
-      <%= cl_image_tag booking.item.photo.key, height: 300, width: 400, crop: :fill %>
-        <h3><%= booking.item.brand %></h3>
-        <p>Booking Date: <%= booking.created_at.strftime('%B %d, %Y') %></p>
-        <%= link_to 'View Details', booking_path(booking), class: 'btn btn-primary' %>
-      </div>
+  <div class="row">
+  <div class="col-6">
+    <h1>Rent requests</h1>
+    <hr>
+    <% if @rentpending.count > 0%>
+<h3>Pending requests</h3>
+<hr>
+<% end  %>
+    <% @rentpending.each do |rentpending| %>
+      <div class="bg-warning bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= rentpending.item.brand %></h5>
+        <p>Booking Date: <%= rentpending.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentpending), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    <% if @rentaccepted.count > 0%>
+<h3>Accepted requests</h3>
+<hr>
+<% end  %>
+    <% @rentaccepted.each do |rentaccepted| %>
+      <div class="bg-success bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= rentaccepted.item.brand %></h5>
+        <p>Booking Date: <%= rentaccepted.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentaccepted), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+<% if @rentrejected.count > 0%>
+<h3>Rejected requests</h3>
+<hr>
+<% end  %>
+    <% @rentrejected.each do |rentrejected| %>
+      <div class="bg-danger bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= rentrejected.item.brand %></h5>
+        <p>Booking Date: <%= rentrejected.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentrejected), class: 'btn btn-primary' %>
+        </div>
     <% end %>
   </div>
-</section>
+<div class="col-6">
+    <h1>Lend requests</h1>
+    <hr>
+    <% if @lendpending.count > 0%>
+<h3>Pending requests</h3>
+<hr>
+<% end  %>
+    <% @lendpending.each do |lendpending| %>
+      <div class="bg-warning bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= lendpending.item.brand %></h5>
+        <p>Booking Date: <%= lendpending.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(lendpending), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    <% if @lendaccepted.count > 0%>
+<h3>Accepted requests</h3>
+<hr>
+<% end  %>
+    <% @lendaccepted.each do |lendaccepted| %>
+      <div class="bg-success bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= lendaccepted.item.brand %></h5>
+        <p>Booking Date: <%= lendaccepted.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(lendaccepted), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    <% if @lendrejected.count > 0%>
+<h3>Rejected requests</h3>
+<hr>
+<% end  %>
+    <% @lendrejected.each do |lendrejected| %>
+      <div class="bg-danger bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= lendrejected.item.brand %></h5>
+        <p>Booking Date: <%= lendrejected.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(lendrejected), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>

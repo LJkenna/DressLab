@@ -10,6 +10,97 @@
       <%= link_to "Edit account", edit_user_registration_path, class: "btn btn-primary mt-3" %>
     </div>
   </div>
+ <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Rent requests</a>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Lend requests</button>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+        <% if @rentpending.count > 0%>
+<h3>Pending requests</h3>
+<hr>
+<% end  %>
+    <% @rentpending.each do |rentpending| %>
+      <div class="bg-warning bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= rentpending.item.brand %></h5>
+        <p>Booking Date: <%= rentpending.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentpending), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    <% if @rentaccepted.count > 0%>
+<h3>Accepted requests</h3>
+<hr>
+<% end  %>
+    <% @rentaccepted.each do |rentaccepted| %>
+      <div class="bg-success bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= rentaccepted.item.brand %></h5>
+        <p>Booking Date: <%= rentaccepted.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentaccepted), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+<% if @rentrejected.count > 0%>
+<h3>Rejected requests</h3>
+<hr>
+<% end  %>
+    <% @rentrejected.each do |rentrejected| %>
+      <div class="bg-danger bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= rentrejected.item.brand %></h5>
+        <p>Booking Date: <%= rentrejected.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(rentrejected), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+<div class="col-6">
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+<% if @lendpending.count > 0%>
+<h3>Pending requests</h3>
+<hr>
+<% end  %>
+    <% @lendpending.each do |lendpending| %>
+      <div class="bg-warning bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= lendpending.item.brand %></h5>
+        <p>Booking Date: <%= lendpending.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(lendpending), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    <% if @lendaccepted.count > 0%>
+<h3>Accepted requests</h3>
+<hr>
+<% end  %>
+    <% @lendaccepted.each do |lendaccepted| %>
+      <div class="bg-success bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= lendaccepted.item.brand %></h5>
+        <p>Booking Date: <%= lendaccepted.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(lendaccepted), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    <% if @lendrejected.count > 0%>
+<h3>Rejected requests</h3>
+<hr>
+<% end  %>
+    <% @lendrejected.each do |lendrejected| %>
+      <div class="bg-danger bg-opacity-25 mb-2 booking-card">
+
+        <h5><%= lendrejected.item.brand %></h5>
+        <p>Booking Date: <%= lendrejected.created_at.strftime('%B %d, %Y') %></p>
+        <%= link_to 'View Details', booking_path(lendrejected), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>      </div>
+    </div>
+  </div>
+</div>
 
   <div class="card mt-5">
     <div class="card-header">

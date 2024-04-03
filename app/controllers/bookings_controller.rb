@@ -1,28 +1,50 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :destroy]
-  def index
-    @bookings = current_user.bookings
-  end
+  before_action :set_booking, only: [:show, :destroy, :accepted, :rejected]
+  # def index
+  #   @rentpending = current_user.bookings.request_pending
+  #   @rentaccepted = current_user.bookings.request_accepted
+  #   @rentrejected = current_user.bookings.request_rejected
+  #   lendbookings = Booking.joins(:item).where(item: { user_id: current_user.id })
+  #   @lendpending = lendbookings.request_pending
+  #   @lendaccepted = lendbookings.request_accepted
+  #   @lendrejected = lendbookings.request_rejected
+  # end
 
   def show
     @item = Item.find(@booking.item_id)
   end
 
   def create
-    @user = User.find(current_user.id)
+    if user_signed_in?
     @item = Item.find(params[:item_id])
     @booking = Booking.new(booking_params)
-    @booking.user_id = @user.id
-    @booking.item_id = @item.id
+    @booking.total_amount = total_amount(@item, @booking)
+    @booking.user = User.find(current_user.id)
+    @booking.item = @item
+    @booking.request_pending!
     if @booking.save
       redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
+  else
+    redirect_to item_path
+    flash.alert = "Must be sign in the make booking"
+    end
   end
 
   def destroy
     @booking.destroy
+    redirect_to bookings_path
+  end
+
+  def accepted
+    @booking.request_accepted!
+    redirect_to bookings_path
+  end
+
+  def rejected
+    @booking.request_rejected!
     redirect_to bookings_path
   end
 
@@ -34,5 +56,9 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def total_amount(item, booking)
+    (booking.rent_end_date - booking.rent_start_date).to_i * item.price_per_day
   end
 end

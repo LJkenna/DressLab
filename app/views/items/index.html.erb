@@ -1,5 +1,17 @@
 <div class="container py-5 my-5">
   <div class="card">
+    <div class="search-bar row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: items_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "🧚🏻‍♀️", name: "", class: "btn btn-fairy btn-light" %>
+    <% end %>
+  </div>
+</div>
     <div class="card-header">
       <h2 class="text-dark">Shop</h2>
     </div>
@@ -28,4 +40,4 @@
       </div>
     </div>
   </div>
-</div>
+

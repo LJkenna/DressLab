@@ -24,8 +24,19 @@
       </div>
       <div class="mt-4">
         <%= link_to "Back to shop", items_path, class: "btn btn-secondary mr-2" %>
-        <%= link_to "Delete booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this?"}, class: "btn btn-danger mr-2" %>
-        <%= link_to "Back to bookings", bookings_path, class: "btn btn-primary" %>
+        <%= link_to "Delete request", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure want to delete this?"}, class: "btn btn_primary"  %>
+<hr>
+           <%= link_to "Back to requests", bookings_path, class: "btn btn-primary" %>
+              <hr><% if @item.user_id == current_user.id  %>
+          <% if @booking.request_accepted?  %>
+          <p>Request accepted</p>
+          <% elsif @booking.request_rejected? %>
+          <p>Booking Rejected</p>
+          <% elsif @booking.request_pending? %>
+          <%= link_to "Accept request", accept_path(@booking), class: "btn btn_primary"  %>
+          <%= link_to "Reject request", reject_path(@booking), class: "btn btn_primary"  %>
+          <% end %>
+          <% end  %>
       </div>
     </div>
   </div>
