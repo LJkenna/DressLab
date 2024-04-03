@@ -1,19 +1,21 @@
-<section class="item-new">
-  <div class="container">
-    <h2 class="text-center mb-4">Add New Item</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <%= simple_form_for @item do |f| %>
-          <%= f.input :photo, as: :file %>
-          <%= f.input :brand %>
-          <%= f.input :size %>
-          <%= f.input :color %>
-          <%= f.input :price_per_day %>
-          <%= f.input :garment_type, collection: %w[Coats Denim Dresses Jackets Polo\ shirts Shirts Shorts Skirts Skiwear Suits Sweaters/knitwear Tops Trousers] %>
-          <%= f.input :description %>
+<div class="container py-5 my-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="text-center">Add New Item</h2>
+    </div>
+    <div class="card-body">
+      <%= simple_form_for @item do |f| %>
+        <%= f.input :photo, as: :file %>
+        <%= f.input :brand %>
+        <%= f.input :size %>
+        <%= f.input :color %>
+        <%= f.input :price_per_day %>
+        <%= f.input :garment_type, collection: %w[Coats Denim Dresses Jackets Polo\ shirts Shirts Shorts Skirts Skiwear Suits Sweaters/knitwear Tops Trousers] %>
+        <%= f.input :description %>
+        <div class="text-center">
           <%= f.button :submit, class: "btn btn-primary" %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
-</section>
+</div>
