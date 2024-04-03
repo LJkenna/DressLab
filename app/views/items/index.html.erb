@@ -1,13 +1,13 @@
 <div class="container py-5 my-5">
   <div class="card">
     <div class="card-header">
-      <h2>Shop</h2>
+      <h2 class="text-dark">Shop</h2>
     </div>
     <div class="card-body">
       <div class="row g-3">
         <% @items.each do |item| %>
           <div class="col-lg-4">
-            <div class="card">
+            <div class="card item-card">
               <%= link_to item_path(item), class: "text-decoration-none" do %>
                 <div class="card-img-container">
                   <% if item.photo.attached? %>
@@ -17,9 +17,9 @@
                   <% end %>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title"><%= item.brand %></h5>
-                  <p class="card-text"><%= item.description %></p>
-                  <p class="card-text"><strong><%= item.price_per_day %>€</strong> Per day</p>
+                  <h5 class="card-title text-dark"><%= item.brand %></h5>
+                  <p class="card-text text-dark"><%= item.description %></p>
+                  <p class="card-text text-dark"><strong><%= item.price_per_day %>€</strong> Per day</p>
                 </div>
               <% end %>
             </div>

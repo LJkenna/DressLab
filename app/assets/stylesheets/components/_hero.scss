@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 
     &::before {
         content: "";
@@ -23,6 +24,7 @@
         z-index: 2;  
         text-align: center;
         color: white;
+        
   
         h1 {
             font-size: 64px;
