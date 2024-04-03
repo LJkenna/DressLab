@@ -1,4 +1,4 @@
-<div class="row justify-content-center">
+<div class="search-bar row justify-content-center">
   <div class="col-sm-8 my-3">
     <%= form_with url: items_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
@@ -10,13 +10,7 @@
     <% end %>
   </div>
 </div>
-
 <section class="items-index">
-  <div class="banner">
-    <div class="container">
-      <h2>View all styles</h2>
-    </div>
-  </div>
   <div class="container">
     <h2 class="text-center mb-4">Shop</h2>
     <div class="row">

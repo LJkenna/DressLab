@@ -1,20 +1,21 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :destroy, :accepted, :rejected]
-  def index
-    @rentpending = current_user.bookings.request_pending
-    @rentaccepted = current_user.bookings.request_accepted
-    @rentrejected = current_user.bookings.request_rejected
-    lendbookings = Booking.joins(:item).where(item: { user_id: current_user.id })
-    @lendpending = lendbookings.request_pending
-    @lendaccepted = lendbookings.request_accepted
-    @lendrejected = lendbookings.request_rejected
-  end
+  # def index
+  #   @rentpending = current_user.bookings.request_pending
+  #   @rentaccepted = current_user.bookings.request_accepted
+  #   @rentrejected = current_user.bookings.request_rejected
+  #   lendbookings = Booking.joins(:item).where(item: { user_id: current_user.id })
+  #   @lendpending = lendbookings.request_pending
+  #   @lendaccepted = lendbookings.request_accepted
+  #   @lendrejected = lendbookings.request_rejected
+  # end
 
   def show
     @item = Item.find(@booking.item_id)
   end
 
   def create
+    if user_signed_in?
     @item = Item.find(params[:item_id])
     @booking = Booking.new(booking_params)
     @booking.total_amount = total_amount(@item, @booking)
@@ -25,6 +26,10 @@ class BookingsController < ApplicationController
       redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
+    end
+  else
+    redirect_to item_path
+    flash.alert = "Must be sign in the make booking"
     end
   end
 
